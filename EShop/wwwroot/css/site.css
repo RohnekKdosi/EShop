@@ -95,7 +95,11 @@ main {
 .jumbotron img {
     width: inherit;
 }
-.jumbotron {
-    width: 50%;
-    height: auto;
+.src {
+    font-size: 5px;
+    text-align: right;
+}
+.nav-link img {
+    height: 50%;
+    width: auto;
 }
