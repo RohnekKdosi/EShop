@@ -99,7 +99,7 @@ main {
     font-size: 5px;
     text-align: right;
 }
-.nav-link img {
-    height: 50%;
+.navbar img {
+    height: 40px;
     width: auto;
 }
