@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <!--<div class="container">-->
+            <a class="navbar-brand" asp-area="" asp-page="/Index">EShop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Vyhledávání" aria-label="Vyhledávání">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Vyhledat</button>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-link">
+                        <a class="nav-link" asp-page="/ShoppingCart"><img class="icon" src="~/img/cart.png" /></a><!--Yes, I know, setting it like this is heresy of the highest order. Yes, I tried to do it using styles. No, it didn't work.-->
+                    </li>
+                </ul>
+                <partial name="_LoginPartial" />
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Produkty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Galerie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Obchodní podmínky</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Kontakty</a>
+                    </li>
+                </ul>
+            </div>
+            <!--</div>-->
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="sidenav col-2 col-md-2">
+                <img src="~/img/Sidebar.jpg" />
+                <ul>
+                    <li class="dropdown">
+                        <a class="font-weight-bold category-link">Kategorie</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="font-weight-bold category-link">Produkty</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="font-weight-bold category-link">Uživatelé</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="font-weight-bold category-link">Upload obrázků</a>
+                    </li>
+                </ul>
+            </div>
+            <main role="main" class="col-10 col-md-10 col-sm-12 ml-sm-auto col-lg-10 px-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; @{var year = DateTime.Now.Year;@year.ToString()} - Tea's Create - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <a class="src" target="_blank" href="https://icons8.com/icons/set/favorite-cart">Favorite Cart icon</a><a class="src" target="_blank" href="https://icons8.com"> icon by Icons8</a>
+        </div>
+    </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

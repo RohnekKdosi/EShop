@@ -8,7 +8,7 @@ namespace EShop.Data
 {
     public class Product
     {
-        [Required]
+        [Key]
         public int ID { get; set; }
         [Required]
         public int InStock { get; set; }
@@ -17,8 +17,8 @@ namespace EShop.Data
         public string Description { get; set; }
         [Required]
         public string Name { get; set; }
-        public List<string> ImagePaths { get; set; }
+        public ICollection<ProductPath> ProductPaths { get; set; }
         [Required]
-        public List<Category> Categories { get; set; }
+        public ICollection<Category> CategoryProducts { get; set; }
     }
 }

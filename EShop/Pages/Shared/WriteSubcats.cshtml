@@ -1,0 +1,15 @@
+﻿@model EShop.Data.Category
+
+    <li class="dropdown">
+        <a class="font-weight-bold category-link" asp-page="/ViewCategory" asp-route-CategoryId="@Model.ID">@Model.DisplayName</a>
+
+        @if (Model.Subcategories != null)
+        {
+            <ul class="dropdown-content">
+                @foreach (var c in Model.Subcategories)
+                {
+                    <partial name="WriteSubcats" model="@c" />
+                }
+            </ul>
+        }
+    </li>

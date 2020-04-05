@@ -59,8 +59,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: url(../img/marble.jfif) repeat;
 }
 .footer {
   position: absolute;
@@ -69,26 +70,45 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.sidenav {
+    width: inherit;
+    background-color: rgba(0,0,0,0);
+    z-index: 1000000;
+}
+.sidenav img {
+    width:160px;
+    height: auto;
+    align-self: center;
+}
 .dropdown-content {
+    left: 100%;
+    top: 0;
+    position: absolute;
     display: none;
-    background-color: #f1f1f1;
-    min-width:160px;
-    z-index: 1;
+    min-width: 160px;
 }
-.dropdown-content a {
-    color: black;
-    padding:12px 16px;
-    text-decoration: none;
+.dropdown {
+    background-color: rgba(0,0,0,0);
+}
+.dropdown a {
+    background-color: rgba(294,294,294,0.5);
     display: block;
+    color: darkmagenta;
+    padding: 12px 16px;
+    text-decoration: none;
 }
-.dropdown-content a:hover {
-    background-color: #ddd;
+.dropdown a:hover {
+    background-color: darkmagenta;
+    color: #e5e5e5;
 }
 .dropdown:hover > .dropdown-content {
-    display:block;
+    left: 100%;
+    top: 0;
+    display: block;
+    background-color: rgba(0,0,0,0);
 }
 main {
-    margin-left: 160px;
     padding: 0px 10px;
     align-content: center;
 }
@@ -102,4 +122,10 @@ main {
 .navbar img {
     height: 40px;
     width: auto;
+}
+footer {
+    background-color: darkmagenta;
+}
+.category-link {
+    font-size: 18px;
 }

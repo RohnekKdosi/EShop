@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using EShop.Data;
+using EShop.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +32,17 @@ namespace EShop
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>(
-                options => options.SignIn.RequireConfirmedAccount = true
+                options => { 
+                    //E-shop s plenkami potvrzov·nÌ ˙Ët˘ nepot¯ebuje
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireDigit = false;
+                    options.User.AllowedUserNameCharacters = "a·bcËdÔeÈÏfghiÌjklmnÚoÛpqr¯sötùu˙˘vwxy˝zûA¡BC»DœE…ÃFGHIÕJKLMN“O”PQRÿSäTçU⁄ŸVWXYZ ";
+                    }
                 )
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -41,8 +52,21 @@ namespace EShop
                 options.LogoutPath = "/SignOut";
                 options.AccessDeniedPath = "/AccessDenied";
             });
-            services.AddRazorPages();
-            services.AddAuthorization();
+            services.AddScoped<EmailSender>();
+            services.AddTransient<DataProvider>();
+            services.AddRazorPages(options =>
+            {
+            }).AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Administration", "AdminsOnly");
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminsOnly", policy =>
+                {
+                    policy.RequireRole("ADMIN");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

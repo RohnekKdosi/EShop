@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Services.DataProvider _dp
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,7 +11,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+            <!--<div class="container">-->
                 <a class="navbar-brand" asp-area="" asp-page="/Index">EShop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -42,50 +43,21 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            <!--</div>-->
         </nav>
     </header>
     <div class="container-fluid">
         <div class="row flex-xl-nowrap">
-            <nav class="col-auto col-md-2 d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <div class="dropdown">
-                        <a asp-page="Index" class="category">Dámská móda</a>
-                        <div class="dropdown-content">
-                            <div class="dropdown">
-                                <a asp-page="Index" class="category">Oblečení</a>
-                                <div class="dropdown-content">
-                                    <a asp-page="Index">Čepice</a>
-                                    <a asp-page="Index">Trička, Šaty</a>
-
-                                </div>
-                            </div>
-                            <div class="dropdown">
-                                <a asp-page="Index" class="category">Doplňky</a>
-                                <div class="dropdown-content">
-                                    <a asp-page="Index">Odličovací tampony</a>
-                                    <a asp-page="Index">Kojící vložky</a>
-                                    <a asp-page="Index">Vložky</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <a asp-page="Index" class="category">Pánská móda</a>
-                        <div class="dropdown-content">
-                            <div class="dropdown">
-                                <a asp-page="Index" class="category">Oblečení</a>
-                                <div class="dropdown-content">
-                                    <a asp-page="Index">Čepice</a>
-                                    <a asp-page="Index">Trička</a>
-                                    <a asp-page="Index">Spodní prádlo</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <main role="main" class="col-md-10 col-sm-12 ml-sm-auto col-lg-10 px-4">
+            <div class="sidenav col-2 col-md-2">
+                <img src="~/img/Sidebar.jpg" />
+                <ul>
+                    @foreach (var c in _dp.GetCategories().Where(cat => cat.ParentID == null))
+                    {
+                        <partial name="WriteSubcats" model="@c" />
+                    }
+                </ul>
+            </div>
+            <main role="main" class="col-10 col-md-10 col-sm-12 ml-sm-auto col-lg-10 px-4">
                 @RenderBody()
             </main>
         </div>

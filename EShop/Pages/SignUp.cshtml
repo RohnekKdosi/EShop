@@ -4,5 +4,71 @@
     ViewData["Title"] = "SignUp";
 }
 
-<h1>SignUp</h1>
+<h1>Registrace</h1>
+<form class="border bg-light rounded p-3" asp-route-returnUrl="@Model.ReturnUrl">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Input.FirstName"></label>
+        <input asp-for="Input.FirstName" class="form-control" />
+        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.LastName"></label>
+        <input asp-for="Input.LastName" class="form-control" />
+        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.Password"></label>
+        <input asp-for="Input.Password" class="form-control" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.ConfirmPassword"></label>
+        <input asp-for="Input.ConfirmPassword" class="form-control" />
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.DStreetName"></label>
+        <input asp-for="Input.DStreetName" class="form-control" />
+        <span asp-validation-for="Input.DStreetName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.DCity"></label>
+        <input asp-for="Input.DCity" class="form-control" />
+        <span asp-validation-for="Input.DCity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.DPostalCode"></label>
+        <input asp-for="Input.DPostalCode" class="form-control" />
+        <span asp-validation-for="Input.DPostalCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.BStreetName"></label>
+        <input asp-for="Input.BStreetName" class="form-control" />
+        <span asp-validation-for="Input.BStreetName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.BCity"></label>
+        <input asp-for="Input.BCity" class="form-control" />
+        <span asp-validation-for="Input.BCity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.BPostalCode"></label>
+        <input asp-for="Input.BPostalCode" class="form-control" />
+        <span asp-validation-for="Input.BPostalCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.PhoneNumber"></label>
+        <input asp-for="Input.PhoneNumber" class="form-control" />
+        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="alert-danger">Pozor! V případě zadání smyšlených údajů není nárok na náhradu v případě nedoručení.</div>
+    <div class="alert-danger">GDPR - Vaše údaje využíváme pouze pro účely fakturace a zaslání zboží</div>
+    <button type="submit" class="btn btn-primary">Zaregistrovat se</button>
+</form>
 

@@ -43,7 +43,7 @@ namespace EShop.Services
             using (var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                client.Connect(_server, _port, MailKit.Security.SecureSocketOptions.StartTlsWhenAvailable);
+                client.Connect(_server, _port, true);
                 client.Authenticate(_userName, _password);
                 client.Send(message);
                 client.Disconnect(true);

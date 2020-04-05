@@ -10,7 +10,7 @@ namespace EShop.Data
     public class ApplicationUser : IdentityUser
     {
         public int Points { get; set; }
-        public int BPostalCode { get; set; }
+        public int? BPostalCode { get; set; }
         public string BCity { get; set; }
         public string BStreetName { get; set; }
         [Required]
